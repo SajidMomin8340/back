@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'https://front-kkcb.onrender.com', // Allow requests only from your frontend domain
+  origin: 'https://back-hhlp.onrender.com', // Allow requests only from your frontend domain
   methods: 'GET,POST,PUT,DELETE,OPTIONS', // Specify allowed HTTP methods
   allowedHeaders: 'Content-Type,Authorization' // Specify allowed headers
 }));
