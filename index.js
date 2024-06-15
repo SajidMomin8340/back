@@ -10,11 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: 'https://back-hhlp.onrender.com', // Allow requests only from your frontend domain
-  methods: 'GET,POST,PUT,DELETE,OPTIONS', // Specify allowed HTTP methods
-  allowedHeaders: 'Content-Type,Authorization' // Specify allowed headers
-}));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Visa Chemical');
