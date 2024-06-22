@@ -10,6 +10,10 @@ const drumSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
+        type: {
+            type: String,
+            required: true,
+        },
         credit: {
             type: Number,
             required: true,

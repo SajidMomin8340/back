@@ -2,16 +2,18 @@ import express from 'express';
 import { Company } from '../models/Company.js'; // Adjust the path as necessary
 
 const router = express.Router();
+
+// Create a new company
 router.post('/', async (request, response) => {
     try {
-        const { name } = request.body;
-        if (!name) {
+        const { name, address } = request.body;
+        if (!name || !address) {
             return response.status(400).send({
-                message: 'Send all required fields: Name',
+                message: 'Send all required fields: Name, Address',
             });
         }
 
-        const newCompany = new Company({ name });
+        const newCompany = new Company({ name, address });
         const company = await newCompany.save();
         return response.status(201).send(company);
     } catch (error) {
@@ -50,14 +52,14 @@ router.get('/:id', async (request, response) => {
 router.put('/:id', async (request, response) => {
     try {
         const { id } = request.params;
-        const { name } = request.body;
-        if (!name) {
+        const { name, address } = request.body;
+        if (!name || !address) {
             return response.status(400).send({
-                message: 'Send all required fields: Name',
+                message: 'Send all required fields: Name, Address',
             });
         }
 
-        const company = await Company.findByIdAndUpdate(id, { name }, { new: true });
+        const company = await Company.findByIdAndUpdate(id, { name, address }, { new: true });
         if (!company) {
             return response.status(404).json({ message: 'Company Not Found' });
         }
